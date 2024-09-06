@@ -24,7 +24,13 @@
     <ClCompile Include="InferLibtorch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="AInfer.cpp">
+    <ClCompile Include="InferNothing.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="InferManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="InferONNX.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,7 +38,19 @@
     <ClInclude Include="InferLibtorch.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="AInfer.h">
+    <ClInclude Include="IInfer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="InferConfig.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="InferNothing.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="InferManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="InferONNX.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
