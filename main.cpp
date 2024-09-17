@@ -6,7 +6,7 @@
 
 int main() {
 	torch::Device device(torch::kCUDA);
-	std::string modelPath = "D:/codes/VS2022/idea/inferDNN/x64/Debug/test_model.pt";
+	std::string modelPath = "D:/codes/PyCharmProjects/DLTest/test_model.pt";
 
 	if (!std::filesystem::exists(modelPath))
 		return -1;
@@ -23,7 +23,7 @@ int main() {
 
 	std::cout << "No error!\n";
 
-	std::string imgPath = "D:/codes/VS2022/idea/inferDNN/x64/Debug/dear.png";
+	std::string imgPath = "D:/codes/PyCharmProjects/DLTest/dear.png";
 	auto img = cv::imread(imgPath);
 	if (img.empty()) {
 		std::cerr << "Image Error!\n";
@@ -40,7 +40,7 @@ int main() {
 
 	try {
 		torch::Tensor output = module.forward({ tensor }).toTensor();
-		std::cout << "모델 예측 결과: " << output << std::endl;
+		std::cout << "Results: " << output << std::endl;
 	}
 	catch (const std::exception& e) {
 		std::cerr << "Error: " << e.what();

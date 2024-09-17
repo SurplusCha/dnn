@@ -1,12 +1,12 @@
-#ifndef IDEA_INFERDNN_INFERMANAGER
-#define IDEA_INFERDNN_INFERMANAGER
+#ifndef IDEA_DNN_INFER_INFERMANAGER
+#define IDEA_DNN_INFER_INFERMANAGER
 
 #include <string>
 #include <memory>
 #include <opencv2/opencv.hpp>
 #include "InferNothing.h"
 
-namespace idea::inferdnn {
+namespace idea::dnn::infer {
 	class InferManager
 	{
 	public:

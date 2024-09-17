@@ -5,7 +5,7 @@
 #include "InferLibtorch.h"
 #include "InferONNX.h"
 
-namespace idea::inferdnn {
+namespace idea::dnn::infer {
 	bool InferManager::create(const std::string& configPath)
 	{
 		// TODO: get information from config file

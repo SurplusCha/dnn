@@ -106,14 +106,14 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>D:\Libs\opencv\build\include;D:\Libs\libtorch\debug\include;D:\Libs\libtorch\debug\include\torch\csrc\api\include;D:\Libs\boost\boost_1_85_0</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>D:\Libs\opencv\build\x64\vc16\lib;D:\Libs\libtorch\debug\lib;D:\Libs\boost\boost_1_85_0\lib64-msvc-14.3;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opencv_world4100d.lib;caffe2_nvrtc.lib;c10.lib;c10_cuda.lib;torch.lib;torch_cpu.lib;torch_cuda.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\cublas.lib
-;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\cudart.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\cudnn.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\cufft.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\curand.lib;-INCLUDE:?warp_size@cuda@at@@YAHXZ;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;libboost_log_setup-vc143-mt-gd-x64-1_85.lib;libboost_log_setup-vc143-mt-sgd-x64-1_85.lib;libboost_log_setup-vc143-mt-x64-1_85.lib;libboost_log_setup-vc143-mt-s-x64-1_85.lib;libboost_log-vc143-mt-sgd-x64-1_85.lib;libboost_log-vc143-mt-gd-x64-1_85.lib;libboost_log-vc143-mt-x64-1_85.lib;libboost_log-vc143-mt-s-x64-1_85.lib;%(AdditionalDependencies)</AdditionalDependencies>
+;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\cudart.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\cudnn.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\cufft.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\curand.lib;-INCLUDE:?warp_size@cuda@at@@YAHXZ;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;libboost_log_setup-vc143-mt-gd-x64-1_85.lib;libboost_log-vc143-mt-gd-x64-1_85.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -126,7 +126,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>D:\Libs\boost\boost_1_85_0;D:\Libs\opencv\build\include;D:\Libs\libtorch\release\include;D:\Libs\libtorch\release\include\torch\csrc\api\include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

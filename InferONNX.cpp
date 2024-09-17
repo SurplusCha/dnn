@@ -1,6 +1,6 @@
 #include "InferONNX.h"
 
-namespace idea::inferdnn {
+namespace idea::dnn::infer {
 	bool InferONNX::onCreate(const InferConfig& config)
 	{
 		return true;

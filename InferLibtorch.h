@@ -1,12 +1,12 @@
-#ifndef IDEA_INFERDNN_INFERLIBTORCH
-#define IDEA_INFERDNN_INFERLIBTORCH
+#ifndef IDEA_DNN_INFER_INFERLIBTORCH
+#define IDEA_DNN_INFER_INFERLIBTORCH
 
 #include "IInfer.h"
 #include <torch/script.h>
 #include <torch/torch.h>
 #include "InferConfig.h"
 
-namespace idea::inferdnn {
+namespace idea::dnn::infer {
 	class InferLibtorch : public IInfer
 	{
 	public:

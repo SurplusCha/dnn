@@ -2,7 +2,7 @@
 #include "InferLibtorch.h"
 #include <filesystem>
 
-namespace idea::inferdnn {
+namespace idea::dnn::infer {
 	bool InferLibtorch::onCreate(const InferConfig& config)
 	{
 		// TODO: Add some settings from config object	

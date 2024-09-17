@@ -1,9 +1,9 @@
-#ifndef IDEA_INFERDNN_INFERONNX
-#define IDEA_INFERDNN_INFERONNX
+#ifndef IDEA_DNN_INFER_INFERONNX
+#define IDEA_DNN_INFER_INFERONNX
 
 #include "IInfer.h"
 
-namespace idea::inferdnn {
+namespace idea::dnn::infer {
 	class InferONNX : public IInfer
 	{
 	public:

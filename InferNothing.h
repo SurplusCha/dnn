@@ -1,9 +1,9 @@
-#ifndef IDEA_INFERDNN_INFERNOTHING
-#define IDEA_INFERDNN_INFERNOTHING
+#ifndef IDEA_DNN_INFER_INFERNOTHING
+#define IDEA_DNN_INFER_INFERNOTHING
 
 #include "IInfer.h"
 
-namespace idea::inferdnn {
+namespace idea::dnn::infer {
 	class InferNothing : public IInfer
 	{
 	public:

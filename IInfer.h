@@ -1,11 +1,11 @@
-#ifndef IDEA_INFERDNN_IINFER
-#define IDEA_INFERDNN_IINFER
+#ifndef IDEA_DNN_INFER_IINFER
+#define IDEA_DNN_INFER_IINFER
 
 #include <string>
 #include <opencv2/opencv.hpp>
 #include "InferConfig.h"
 
-namespace idea::inferdnn {
+namespace idea::dnn::infer {
 	class IInfer 
 	{
 	public:

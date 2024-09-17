@@ -1,10 +1,10 @@
-#ifndef IDEA_INFERDNN_INFERCONFIG
-#define IDEA_INFERDNN_INFERCONFIG
+#ifndef IDEA_DNN_INFER_INFERCONFIG
+#define IDEA_DNN_INFER_INFERCONFIG
 
 #include <cstddef>
 #include <string>
 
-namespace idea::inferdnn {
+namespace idea::dnn::infer {
 	enum class EngineType {
 		ENGINE_UNKNOWNED,
 		ENGINE_LIBTORCH,
