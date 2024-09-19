@@ -36,8 +36,8 @@ namespace idea::dnn::infer {
 		DeviceType m_device = DeviceType::DEVICE_CPU;
 		ScalarType m_scalar = ScalarType::SCALAR_FLOAT;
 		std::string m_modelPath = "";
-		std::size_t m_width = 100;
-		std::size_t m_height = 100;
+		std::size_t m_width = 32;
+		std::size_t m_height = 32;
 		std::size_t m_channel = 3;
 		std::array<DimensionType, 4> m_dimensionType 
 			= { DimensionType::TYPE_BATCH, DimensionType::TYPE_CHANNEL, DimensionType::TYPE_HEIGHT, DimensionType::TYPE_WIDTH};
