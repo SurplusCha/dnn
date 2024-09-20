@@ -8,8 +8,10 @@ int main() {
 	torch::Device device(torch::kCUDA);
 	std::string modelPath = "D:/codes/PyCharmProjects/DLTest/test_model.pt";
 
-	if (!std::filesystem::exists(modelPath))
-		return -1;
+	if (!std::filesystem::exists(modelPath)) {
+        std::cerr << "We can't find model file." << "\n";
+        return -1;
+    }
 
 	torch::jit::script::Module module;
 	try {
