@@ -39,7 +39,7 @@ namespace idea::dnn::infer {
 		std::size_t m_width = 32;
 		std::size_t m_height = 32;
 		std::size_t m_channel = 3;
-		std::array<DimensionType, 4> m_dimensionType 
+		std::array<DimensionType, 4> m_dimension
 			= { DimensionType::TYPE_BATCH, DimensionType::TYPE_CHANNEL, DimensionType::TYPE_HEIGHT, DimensionType::TYPE_WIDTH};
 	};
 }
