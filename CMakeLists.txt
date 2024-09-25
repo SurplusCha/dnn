@@ -41,6 +41,8 @@ include_directories(${CUDNN_INCLUDE_DIR})
 link_directories(${CUDNN_LIBRARY_DIR})
 
 # set libtorch
+option(CAFFE2_USE_CUDNN "Use cuDNN support" ON)
+option(CAFFE2_USE_CUSPARSELT "Use cuSPARSELt support" ON)
 find_package(Torch QUIET PATHS "/home/systembug/workspace/libtorch")
 include_directories(${TORCH_INCLUDE_DIRS})
 

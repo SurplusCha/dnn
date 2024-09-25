@@ -43,7 +43,7 @@ namespace idea::dnn::infer {
 			return false;
 		}
 
-		m_dimensionType = c10::IntArrayRef(reinterpret_cast<const int64_t*>(config.m_dimensionType.data()), 4);
+		m_dimensionType = c10::IntArrayRef(reinterpret_cast<const int64_t*>(config.m_dimension.data()), 4);
 		return true;
 	}
 

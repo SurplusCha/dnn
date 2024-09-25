@@ -8,14 +8,14 @@
 #include <string>
 
 namespace idea::dnn::infer {
+    class InferConfig;
     class ConfigManager {
     public:
         ConfigManager() = default;
         ~ConfigManager() = default;
 
     public:
-        bool parse(const std::string& path);
-
+        InferConfig* parse(const std::string& path);
     };
 }
 

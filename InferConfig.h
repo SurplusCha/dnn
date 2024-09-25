@@ -33,12 +33,12 @@ namespace idea::dnn::infer {
 
 	struct InferConfig {
 		EngineType m_engine = EngineType::ENGINE_UNKNOWNED;
-		DeviceType m_device = DeviceType::DEVICE_CPU;
+		DeviceType m_device = DeviceType::DEVICE_UNKNOWNED;
 		ScalarType m_scalar = ScalarType::SCALAR_FLOAT;
 		std::string m_modelPath = "";
-		std::size_t m_width = 32;
-		std::size_t m_height = 32;
-		std::size_t m_channel = 3;
+		std::size_t m_width = 20;
+		std::size_t m_height = 1;
+		std::size_t m_channel = 1;
 		std::array<DimensionType, 4> m_dimension
 			= { DimensionType::TYPE_BATCH, DimensionType::TYPE_CHANNEL, DimensionType::TYPE_HEIGHT, DimensionType::TYPE_WIDTH};
 	};

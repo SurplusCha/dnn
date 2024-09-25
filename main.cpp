@@ -6,7 +6,7 @@
 
 int main() {
 	torch::Device device(torch::kCUDA);
-	std::string modelPath = "D:/codes/PyCharmProjects/DLTest/test_model.pt";
+	std::string modelPath = "../examples/test_model.pt";
 
 	if (!std::filesystem::exists(modelPath)) {
         std::cerr << "We can't find model file." << "\n";
@@ -25,7 +25,7 @@ int main() {
 
 	std::cout << "No error!\n";
 
-	std::string imgPath = "D:/codes/PyCharmProjects/DLTest/dear.png";
+	std::string imgPath = "../examples/deer.png";
 	auto img = cv::imread(imgPath);
 	if (img.empty()) {
 		std::cerr << "Image Error!\n";

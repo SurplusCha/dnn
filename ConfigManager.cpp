@@ -4,18 +4,18 @@
 
 #include <boost/log/trivial.hpp>
 #include <boost/algorithm/string.hpp>
-#include "ConfigManager.h"
+#include <memory>
 #include <filesystem>
+#include "ConfigManager.h"
 #include "yaml-cpp/yaml.h"
 #include "InferConfig.h"
 
-
 namespace idea::dnn::infer {
-    bool ConfigManager::parse(const std::string& path)
+    InferConfig* ConfigManager::parse(const std::string& path)
     {
         if (!std::filesystem::exists(path)) {
             BOOST_LOG_TRIVIAL(error) << "This path is invalid.";
-            return false;
+            return nullptr;
         }
 
         YAML::Node configFile;
@@ -24,63 +24,63 @@ namespace idea::dnn::infer {
         }
         catch (const std::exception& e) {
             BOOST_LOG_TRIVIAL(error) << e.what();
-            return false;
+            return nullptr;
         }
 
-        InferConfig config;
+        auto config = std::make_shared<InferConfig>();
         try {
             auto engineType = configFile["engine"].as<std::string>();
             boost::to_lower(engineType);
             if (engineType == "torch") {
-                config.m_engine = EngineType::ENGINE_LIBTORCH;
+                config->m_engine = EngineType::ENGINE_LIBTORCH;
             } else if (engineType == "onnx") {
-                config.m_engine = EngineType::ENGINE_ONNX;
+                config->m_engine = EngineType::ENGINE_ONNX;
             } else {
-                config.m_engine = EngineType::ENGINE_UNKNOWNED;
+                config->m_engine = EngineType::ENGINE_UNKNOWNED;
             }
 
             auto deviceType = configFile["device"].as<std::string>();
             boost::to_lower(deviceType);
             if (deviceType == "gpu") {
-                config.m_device = DeviceType::DEVICE_GPU;
+                config->m_device = DeviceType::DEVICE_GPU;
             } else if (deviceType == "cpu") {
-                config.m_device = DeviceType::DEVICE_CPU;
+                config->m_device = DeviceType::DEVICE_CPU;
             } else {
-                config.m_device = DeviceType::DEVICE_UNKNOWNED;
+                config->m_device = DeviceType::DEVICE_UNKNOWNED;
             }
 
             auto scalarType = configFile["scalar"].as<std::string>();
             boost::to_lower(scalarType);
             if (scalarType == "float" || scalarType == "float32") {
-                config.m_scalar = ScalarType::SCALAR_FLOAT;
+                config->m_scalar = ScalarType::SCALAR_FLOAT;
             }
             else if (scalarType == "float16") {
-                config.m_scalar = ScalarType::SCALAR_FLOAT16;
+                config->m_scalar = ScalarType::SCALAR_FLOAT16;
             }
             else if (scalarType == "int8") {
-                config.m_scalar = ScalarType::SCALAR_INT8;
+                config->m_scalar = ScalarType::SCALAR_INT8;
             }
             else if (scalarType == "bfloat16") {
-                config.m_scalar = ScalarType::SCALAR_BFLOAT16;
+                config->m_scalar = ScalarType::SCALAR_BFLOAT16;
             }
             else {
-                config.m_scalar = ScalarType::SCALAR_FLOAT;
+                config->m_scalar = ScalarType::SCALAR_FLOAT;
             }
 
-            config.m_modelPath = configFile["model_path"].as<std::string>();
-            config.m_width = configFile["width"].as<std::size_t>();
-            config.m_height = configFile["height"].as<std::size_t>();
-            config.m_channel = configFile["channel"].as<std::size_t>();
+            config->m_modelPath = configFile["model_path"].as<std::string>();
+            config->m_width = configFile["width"].as<std::size_t>();
+            config->m_height = configFile["height"].as<std::size_t>();
+            config->m_channel = configFile["channel"].as<std::size_t>();
 
             auto dimensionArr = configFile["dimension"];
             for (auto i = 0; i < dimensionArr.size(); ++i)
-                config.m_dimension[i] = static_cast<DimensionType>(dimensionArr[i].as<int64_t>());
+                config->m_dimension[i] = static_cast<DimensionType>(dimensionArr[i].as<int64_t>());
         }
         catch (const std::exception& e) {
             BOOST_LOG_TRIVIAL(error) << e.what();
-            return false;
+            return nullptr;
         }
 
-        return true;
+        return config.get();
     }
 }
