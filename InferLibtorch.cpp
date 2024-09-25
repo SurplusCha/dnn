@@ -5,7 +5,6 @@
 namespace idea::dnn::infer {
 	bool InferLibtorch::onCreate(const InferConfig& config)
 	{
-		// TODO: Add some settings from config object	
 		switch (config.m_device) {
 			case DeviceType::DEVICE_GPU:
 				m_deviceType = torch::kCUDA;
@@ -27,7 +26,7 @@ namespace idea::dnn::infer {
 			case ScalarType::SCALAR_BFLOAT16:
 				m_scalarType = torch::kBFloat16;
 				break;
-			case ScalarType::SCALAR_FLOAT:
+			case ScalarType::SCALAR_FLOAT32:
 			default:
 				m_scalarType = torch::kFloat;
 				break;
@@ -43,18 +42,23 @@ namespace idea::dnn::infer {
 			return false;
 		}
 
-		m_dimensionType = c10::IntArrayRef(reinterpret_cast<const int64_t*>(config.m_dimension.data()), 4);
-		return true;
+        std::transform(std::cbegin(config.m_dimension), std::cend(config.m_dimension),
+                       std::begin(m_dimensionType), [](const DimensionType& value) {
+            return static_cast<std::size_t>(value);
+        });
+        return true;
 	}
 
 	bool InferLibtorch::onProcess(const cv::Mat& mat)
 	{
 		auto tensor = torch::from_blob(mat.data, { 1, mat.rows, mat.cols, mat.channels()});
-		tensor = tensor.permute(m_dimensionType);
+        auto dimensionType = c10::IntArrayRef(reinterpret_cast<const int64_t*>(m_dimensionType.data()), 4);
+		tensor = tensor.permute(dimensionType);
 		tensor = tensor.contiguous().to(m_deviceType, m_scalarType, false, false);		
 
 		try {
 			torch::Tensor output = m_module.forward({ tensor }).toTensor();
+            BOOST_LOG_TRIVIAL(info) << output;
 		}
 		catch (const std::exception& e) {
 			BOOST_LOG_TRIVIAL(error) << e.what();

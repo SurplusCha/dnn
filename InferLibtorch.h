@@ -20,9 +20,9 @@ namespace idea::dnn::infer {
 
 	private:
 		torch::jit::script::Module							m_module;
-		c10::DeviceType 									m_deviceType;
-		c10::ScalarType										m_scalarType;
-		c10::IntArrayRef									m_dimensionType;
+		c10::DeviceType 									m_deviceType = torch::kCPU;
+		c10::ScalarType										m_scalarType = torch::kFloat;
+		std::array<std::size_t, 4>						    m_dimensionType = {0, 1, 2, 3};
 	};
 }
 

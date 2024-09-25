@@ -1,7 +1,6 @@
 #include <boost/log/trivial.hpp>
 #include <filesystem>
 #include "InferManager.h"
-#include "InferConfig.h"
 #include "InferLibtorch.h"
 #include "InferONNX.h"
 
@@ -9,8 +8,13 @@ namespace idea::dnn::infer {
 	bool InferManager::create(const std::string& configPath)
 	{
 		// TODO: get information from config file
-		auto config = InferConfig();
-		switch (config.m_engine) {
+		auto config = m_configManager.parse(configPath);
+        if (config == nullptr) {
+            BOOST_LOG_TRIVIAL(error) << "Configuration to infer a model cannot be created.";
+            return false;
+        }
+
+		switch (config->m_engine) {
 			case EngineType::ENGINE_LIBTORCH:
 				m_infer = std::make_unique<InferLibtorch>();
 				break;
@@ -23,7 +27,7 @@ namespace idea::dnn::infer {
 				break;
 		}
 
-		if (!m_infer->onCreate(config))
+		if (!m_infer->onCreate(*config))
 			return false;
 
 		return true;

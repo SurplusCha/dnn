@@ -4,6 +4,7 @@
 #include <string>
 #include <memory>
 #include <opencv2/opencv.hpp>
+#include "ConfigManager.h"
 #include "InferNothing.h"
 
 namespace idea::dnn::infer {
@@ -19,6 +20,7 @@ namespace idea::dnn::infer {
 		bool destroy();
 
 	private:
+        ConfigManager           m_configManager;
 		std::unique_ptr<IInfer>	m_infer = std::make_unique<InferNothing>();
 	};
 }

@@ -4,14 +4,13 @@
 
 #include <boost/log/trivial.hpp>
 #include <boost/algorithm/string.hpp>
-#include <memory>
 #include <filesystem>
 #include "ConfigManager.h"
 #include "yaml-cpp/yaml.h"
 #include "InferConfig.h"
 
 namespace idea::dnn::infer {
-    InferConfig* ConfigManager::parse(const std::string& path)
+    std::shared_ptr<InferConfig> ConfigManager::parse(const std::string& path)
     {
         if (!std::filesystem::exists(path)) {
             BOOST_LOG_TRIVIAL(error) << "This path is invalid.";
@@ -52,7 +51,7 @@ namespace idea::dnn::infer {
             auto scalarType = configFile["scalar"].as<std::string>();
             boost::to_lower(scalarType);
             if (scalarType == "float" || scalarType == "float32") {
-                config->m_scalar = ScalarType::SCALAR_FLOAT;
+                config->m_scalar = ScalarType::SCALAR_FLOAT32;
             }
             else if (scalarType == "float16") {
                 config->m_scalar = ScalarType::SCALAR_FLOAT16;
@@ -64,7 +63,7 @@ namespace idea::dnn::infer {
                 config->m_scalar = ScalarType::SCALAR_BFLOAT16;
             }
             else {
-                config->m_scalar = ScalarType::SCALAR_FLOAT;
+                config->m_scalar = ScalarType::SCALAR_FLOAT32;
             }
 
             config->m_modelPath = configFile["model_path"].as<std::string>();
@@ -81,6 +80,6 @@ namespace idea::dnn::infer {
             return nullptr;
         }
 
-        return config.get();
+        return config;
     }
 }

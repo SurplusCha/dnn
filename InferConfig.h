@@ -18,7 +18,7 @@ namespace idea::dnn::infer {
 	};
 
 	enum class ScalarType {
-		SCALAR_FLOAT,
+		SCALAR_FLOAT32,
 		SCALAR_INT8,
 		SCALAR_FLOAT16,
 		SCALAR_BFLOAT16,
@@ -34,7 +34,7 @@ namespace idea::dnn::infer {
 	struct InferConfig {
 		EngineType m_engine = EngineType::ENGINE_UNKNOWNED;
 		DeviceType m_device = DeviceType::DEVICE_UNKNOWNED;
-		ScalarType m_scalar = ScalarType::SCALAR_FLOAT;
+		ScalarType m_scalar = ScalarType::SCALAR_FLOAT32;
 		std::string m_modelPath = "";
 		std::size_t m_width = 20;
 		std::size_t m_height = 1;

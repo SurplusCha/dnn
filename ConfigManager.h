@@ -6,6 +6,7 @@
 #define IDEA_DNN_INFER_CONFIGMANAGER
 
 #include <string>
+#include <memory>
 
 namespace idea::dnn::infer {
     class InferConfig;
@@ -15,7 +16,7 @@ namespace idea::dnn::infer {
         ~ConfigManager() = default;
 
     public:
-        InferConfig* parse(const std::string& path);
+        std::shared_ptr<InferConfig> parse(const std::string& path);
     };
 }
 
