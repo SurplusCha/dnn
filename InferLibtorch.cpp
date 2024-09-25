@@ -52,7 +52,8 @@ namespace idea::dnn::infer {
 	bool InferLibtorch::onProcess(const cv::Mat& mat)
 	{
 		auto tensor = torch::from_blob(mat.data, { 1, mat.rows, mat.cols, mat.channels()});
-        auto dimensionType = c10::IntArrayRef(reinterpret_cast<const int64_t*>(m_dimensionType.data()), 4);
+        auto dimensionType = c10::IntArrayRef(reinterpret_cast<const int64_t*>(m_dimensionType.data()),
+                                              m_dimensionType.size());
 		tensor = tensor.permute(dimensionType);
 		tensor = tensor.contiguous().to(m_deviceType, m_scalarType, false, false);		
 
