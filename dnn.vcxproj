@@ -143,6 +143,7 @@ C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\cudart.lib;C:\P
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConfigManager.cpp" />
     <ClCompile Include="InferLibtorch.cpp" />
     <ClCompile Include="InferManager.cpp" />
     <ClCompile Include="InferNothing.cpp" />
@@ -150,6 +151,7 @@ C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\cudart.lib;C:\P
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ConfigManager.h" />
     <ClInclude Include="IInfer.h" />
     <ClInclude Include="InferConfig.h" />
     <ClInclude Include="InferLibtorch.h" />
@@ -158,6 +160,5 @@ C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\cudart.lib;C:\P
     <ClInclude Include="InferONNX.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>
