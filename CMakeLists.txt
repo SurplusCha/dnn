@@ -47,13 +47,14 @@ find_package(Torch QUIET PATHS "/home/systembug/workspace/libtorch")
 include_directories(${TORCH_INCLUDE_DIRS})
 
 # set yaml-cpp
-include(FetchContent)
-FetchContent_Declare(
-        yaml-cpp
-        GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
-        GIT_TAG 0.8.0 # Can be a tag (yaml-cpp-x.x.x), a commit hash, or a branch name (master)
-)
-FetchContent_MakeAvailable(yaml-cpp)
+# include(FetchContent)
+# FetchContent_Declare(
+#        yaml-cpp
+#        GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
+#        GIT_TAG 0.8.0 # Can be a tag (yaml-cpp-x.x.x), a commit hash, or a branch name (master)
+# )
+# FetchContent_MakeAvailable(yaml-cpp)
+add_subdirectory(yaml-cpp)
 
 add_executable(dnn main.cpp InferLibtorch.cpp InferONNX.cpp InferNothing.cpp InferManager.cpp ConfigManager.cpp ConfigManager.h)
 target_link_libraries(dnn PUBLIC yaml-cpp::yaml-cpp ${Boost_LIBRARIES} ${OpenCV_LIBS} ${TORCH_LIBRARIES} ${CUDNN_LIBRARY} Boost::log Boost::system Boost::filesystem Boost::thread)
